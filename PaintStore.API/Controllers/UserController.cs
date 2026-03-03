@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PaintStore.API.DataAccess;
+using PaintStore.API.Services;
 using PaintStore.Models;
 
 namespace PaintStore.API.Controllers
@@ -9,22 +10,18 @@ namespace PaintStore.API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private PaintStoreDbContext _dbContext;
-        public UserController(PaintStoreDbContext paintStoreDb)
+        private UserService _userService;
+        public UserController()
         {
-            _dbContext = paintStoreDb;
+            _userService = new UserService();
         }
 
         [HttpPost]
         public ActionResult CreateUser([FromBody] User user)
-        {
-            //Add only mark user to be added
-            _dbContext.Users.Add(user);
+        {          
+            User newUser = _userService.CreateUser(user);
 
-            //save to db
-            _dbContext.SaveChanges();
-
-            return Created("GetUserById",user);
+            return Created("GetUserById",newUser);
         }
     }
 }

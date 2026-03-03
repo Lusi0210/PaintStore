@@ -13,4 +13,12 @@ public class PaintStoreDbContext : DbContext
     public PaintStoreDbContext(DbContextOptions<PaintStoreDbContext> options):base(options)
     {      
     }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<PaintProduct>().HasKey(p=>p.Id);
+        modelBuilder.Entity<PaintProduct>().Property(p=>p.Price).IsRequired();
+        modelBuilder.Entity<PaintProduct>().Property(p=>p.Name).IsRequired().HasMaxLength(50);
+        base.OnModelCreating(modelBuilder);
+    }
 }

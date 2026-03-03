@@ -9,10 +9,8 @@ public class PaintProduct
     //convention based PK
     public int Id { get; set; }
     
-    [MaxLength(50)]
     public string Name { get; set; }
 
-    [Required]
     public decimal Price { get; set; }
 
     //PaintProduct ------ Order   N:1

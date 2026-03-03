@@ -18,6 +18,8 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="DataAccess\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
