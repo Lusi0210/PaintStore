@@ -14,13 +14,13 @@ public class UserRepository:IUserRepository
     {
         _dbContext = paintStoreDb;
     }
-    public User AddUserToDb(User user)
+    public async Task<User> AddUserToDbAsync(User user)
     {
         //Add only mark user to be added
-        _dbContext.Users.Add(user);
+        await _dbContext.Users.AddAsync(user);
 
         //save to db
-        int changes = _dbContext.SaveChanges();
+        int changes = await _dbContext.SaveChangesAsync();
         if (changes > 0)
         {
             return user;

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PaintStore.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aaa6a424394e1306c37d5e598d787e39aceb6448")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2b417894ce74bbbbfad61015cfccad5c3acc17a")]
 [assembly: System.Reflection.AssemblyProductAttribute("PaintStore.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PaintStore.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

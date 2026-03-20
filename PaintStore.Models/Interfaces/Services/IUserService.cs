@@ -5,5 +5,5 @@ namespace PaintStore.Models.Interfaces.Services;
 
 public interface IUserService
 {
-    User CreateUser(User user);
+    Task<User> CreateUserAsync(User user);
 }

@@ -32,13 +32,13 @@ namespace PaintStore.API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<UserResponseDto> CreateUser([FromBody] UserCreateDto userCreateDto)
+        public async Task<ActionResult<UserResponseDto>> CreateUser([FromBody] UserCreateDto userCreateDto)
         {          
             _logger.LogInformation("Create User: Received request");
             
             User user = _mapper.Map<User>(userCreateDto);
 
-            User newUser = _userService.CreateUser(user);
+            User newUser = await _userService.CreateUserAsync(user);
 
             UserResponseDto dto = _mapper.Map<UserResponseDto>(newUser);
 

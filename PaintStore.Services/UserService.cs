@@ -14,9 +14,9 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public User CreateUser(User user)
+    public async Task<User> CreateUserAsync(User user)
     {      
-        User newUser = _userRepository.AddUserToDb(user);
+        User newUser = await _userRepository.AddUserToDbAsync(user);
         return newUser;
     }
 }
