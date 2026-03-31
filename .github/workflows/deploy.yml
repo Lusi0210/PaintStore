@@ -1,0 +1,39 @@
+name: Build PaintStore API & Deploy to Azure App Service (.NET 10)
+
+on:
+  push:
+    branches: ["main"]
+
+env:
+  DOTNET_VERSION: '10.0'
+  PUBLISH_DIR: 'publish'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 10 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restore Packages
+        run: dotnet restore
+
+      - name: Build Project
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Publish
+        run: dotnet publish -c Release -o ${{ env.PUBLISH_DIR }}
+
+      - name: Deploy to Azure App Service
+        uses: azure/webapps-deploy@v3
+        with:
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_PAINTSTOREAPI }}
+          package: ${{ env.PUBLISH_DIR }}
+        
+
+
